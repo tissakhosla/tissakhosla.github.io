@@ -56,25 +56,96 @@ header h1 span {
 }
 
 nav {
+    padding: 20px;
+    position: relative;
     display: flex;
+    flex-direction: row-reverse;
+}
+
+nav>a {
+    text-align: right;
+    font-size: 24px;
+    transition: all .3s;
+    background: rgba(255, 255, 255, 0);
     padding: 10px;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    padding: 14px 20px;
-    text-align: center;
+nav>a:hover {
+    background: rgba(255, 255, 255, 1);
+    color: black;
 }
 
-nav a:hover {
-    background-color: #ddd;
-    color: black;
+
+.sidebar {
+    height: 100vh;
+    /* Full viewport height */
+    width: 0;
+    /* Start with width 0 for transition effect */
+    max-width: 100%;
+    position: fixed;
+    /* Fixed to the viewport for proper sliding */
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: width 0.5s;
+    /* Smooth transition effect for width */
+    padding-top: 60px;
+    padding-bottom: 60px;
+    /* Adds some padding to the right of the text */
+    z-index: 1000;
+    /* Ensures sidebar is above other content */
+    /* Prevents text from wrapping */
+}
+
+.sidebar a {
+    padding: 12px 40px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    display: block;
+    font-family: 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', Consolas, Monaco, 'Lucida Console';
+}
+
+.sidebar a:hover {
+    background-color: #fff;
+    color: #111;
+    font-weight: bold;
+}
+
+.sidebar .close-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 50px;
+    font-weight: lighter;
+    padding: 20px;
+    line-height: .5;
+    margin: 10px;
+}
+
+.sidebar h2 {
+    color: #fff;
+    margin: 25px;
+    font-family: 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', Consolas, Monaco, 'Lucida Console';
+    text-transform: uppercase;
+    display: inline-block;
+    /* Restricts the width to just the text */
+    position: relative;
+    /* Establishes a context for the pseudo-element */
+    /* Space below the heading */
+    padding-right: 10px;
+    /* Adds some space between the text and the line */
+}
+
+.sidebar .cats div {
+    overflow-x: hidden;
+    max-width: 100%;
 }
 
 .social-links {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -103,6 +174,7 @@ nav a:hover {
     display: flex;
     justify-content: center;
     align-items: start;
+    flex-wrap: wrap;
 }
 
 .cat {
@@ -119,7 +191,6 @@ nav a:hover {
 .cat p {
     margin: 0
 }
-
 
 .column {
     display: flex;
@@ -198,6 +269,40 @@ nav a:hover {
     pointer-events: none;
 }
 
-.footer-img {
+.footer-img-wide {
     width: 100%;
+}
+
+.footer-img-tall {
+    display: none;
+}
+
+footer .social-links {
+    display: none;
+}
+
+@media (max-width: 910px) {
+    header {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    header .social-links {
+        display: none;
+    }
+
+    footer .social-links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-img-wide {
+        display: none;
+    }
+
+    .footer-img-tall {
+        display: block;
+        width: 100%;
+    }
 }
