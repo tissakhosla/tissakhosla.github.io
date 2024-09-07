@@ -78,37 +78,37 @@ nav>a:hover {
 
 .sidebar {
     height: 100vh;
-    /* Full viewport height */
     width: 0;
-    /* Start with width 0 for transition effect */
     max-width: 100%;
     position: fixed;
-    /* Fixed to the viewport for proper sliding */
     top: 0;
     right: 0;
     background-color: #111;
     overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     transition: width 0.5s;
-    /* Smooth transition effect for width */
     padding-top: 60px;
     padding-bottom: 60px;
-    /* Adds some padding to the right of the text */
     z-index: 1000;
-    /* Ensures sidebar is above other content */
-    /* Prevents text from wrapping */
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
 }
 
 .sidebar a {
     padding: 12px 40px;
     text-decoration: none;
     font-size: 20px;
-    color: #fff;
+    color: white;
     display: block;
     font-family: 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', Consolas, Monaco, 'Lucida Console';
 }
 
 .sidebar a:hover {
-    background-color: #fff;
+    background-color: white;
     color: #111;
     font-weight: bold;
 }
@@ -125,7 +125,7 @@ nav>a:hover {
 }
 
 .sidebar h2 {
-    color: #fff;
+    color: white;
     margin: 25px;
     font-family: 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', Consolas, Monaco, 'Lucida Console';
     text-transform: uppercase;
