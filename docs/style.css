@@ -2,14 +2,24 @@
     box-sizing: border-box;
 }
 
+[data-theme="dark"] {
+    --color-bg: #000000;
+    --color-fg: #ffffff;
+}
+
+[data-theme="light"] {
+    --color-bg: #ffffff;
+    --color-fg: #000000;
+}
+
 html {
     margin: 0;
     scroll-behavior: smooth;
-    background-color: black;
+    background-color: var(--color-bg);
 }
 
 body {
-    margin: 5px;
+    margin: 0px;
 }
 
 h1,
@@ -22,7 +32,7 @@ p,
 li,
 a {
     font-family: Helvetica, Arial, sans-serif;
-    color: white;
+    color: var(--color-fg);
 }
 
 p {
@@ -37,6 +47,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    flex-direction: row-reverse;
 }
 
 header>nav,
@@ -76,73 +87,6 @@ nav>a:hover {
 }
 
 
-.sidebar {
-    height: 100vh;
-    width: 0;
-    max-width: 100%;
-    position: fixed;
-    top: 0;
-    right: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    transition: width 0.5s;
-    padding-top: 60px;
-    padding-bottom: 60px;
-    z-index: 1000;
-}
-
-.sidebar::-webkit-scrollbar {
-    display: none;
-}
-
-.sidebar a {
-    padding: 12px 40px;
-    text-decoration: none;
-    font-size: 20px;
-    color: white;
-    display: block;
-    font-family: 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', Consolas, Monaco, 'Lucida Console';
-}
-
-.sidebar a:hover {
-    background-color: white;
-    color: #111;
-    font-weight: bold;
-}
-
-.sidebar .close-btn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 50px;
-    font-weight: lighter;
-    padding: 20px;
-    line-height: .5;
-    margin: 10px;
-}
-
-.sidebar h2 {
-    color: white;
-    margin: 25px;
-    font-family: 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', Consolas, Monaco, 'Lucida Console';
-    text-transform: uppercase;
-    display: inline-block;
-    /* Restricts the width to just the text */
-    position: relative;
-    /* Establishes a context for the pseudo-element */
-    /* Space below the heading */
-    padding-right: 10px;
-    /* Adds some space between the text and the line */
-}
-
-.sidebar .cats div {
-    overflow-x: hidden;
-    max-width: 100%;
-}
-
 .social-links {
     display: flex;
     justify-content: flex-start;
@@ -154,13 +98,13 @@ nav>a:hover {
 .social-links a {
     display: inline-block;
     width: auto;
-    height: 30px;
+    /* height: 30px; */
     margin: 15px
 }
 
 .social-links img {
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: 30px;
     opacity: 1;
     transition: all 0.3s;
 }
@@ -168,6 +112,103 @@ nav>a:hover {
 .social-links a:hover img,
 .social-links a:focus img {
     opacity: .5;
+}
+
+.sidebar {
+    height: 100vh;
+    width: 0;
+    max-width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgba(17, 17, 17, .98);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    transition: width 0.5s;
+    padding-top: 60px;
+    padding-bottom: 30px;
+    z-index: 1000;
+    display: none;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar .cats a {
+    padding: 12px 40px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: block;
+    font-family: 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', Consolas, Monaco, 'Lucida Console';
+}
+
+.sidebar .cats a:hover,
+.sidebar .cats a:focus {
+    background-color: white;
+    color: #111;
+    font-weight: bold;
+}
+
+.sidebar .close-btn {
+    color: white;
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 50px;
+    font-weight: lighter;
+    padding: 20px;
+    line-height: .5;
+    margin: 10px;
+    text-decoration: none;
+}
+
+.sidebar h2 {
+    color: white;
+    margin: 25px;
+    font-family: 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', Consolas, Monaco, 'Lucida Console';
+    text-transform: uppercase;
+    padding-right: 10px;
+}
+
+.sidebar .cats div {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+.sidebar .social-links {
+    margin: auto 5px 5px 40px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sidebar .social-links img {
+    height: 30px;
+    width: auto;
+}
+
+.sidebar .theme-button {
+    font-size: 20px;
+    padding: 10px 15px;
+    margin: 20px 30px;
+    transition: all .3s ease-in-out;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid white;
+    font-family: 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', Consolas, Monaco, 'Lucida Console';
+}
+
+.sidebar .theme-button:hover,
+.sidebar .theme-button:focus {
+    background-color: white;
+    color: black;
+    border: 1px solid rgba(0, 0, 0, 0);
+    font-weight: bold;
 }
 
 .main {
@@ -178,7 +219,7 @@ nav>a:hover {
 }
 
 .cat {
-    border-bottom: solid white 1px;
+    border-bottom: solid var(--color-fg) 1px;
     width: 100%;
     margin-bottom: 10px;
 }
@@ -212,18 +253,18 @@ nav>a:hover {
 }
 
 .main a p {
-    color: white;
     margin: 10px 0;
     text-decoration: underline;
-    text-decoration-color: rgba(0, 0, 0, 0);
-    text-underline-offset: .3em;
-    transform: all .3s;
+    text-decoration-color: var(--color-bg);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0em;
+    transition: all .3s;
 }
 
 .main a:hover p,
 .main a:focus p {
-    text-underline-offset: .3em;
-    text-decoration-color: rgba(255, 255, 255, .6);
+    text-underline-offset: .2em;
+    text-decoration-color: var(--color-fg);
 }
 
 .main img {
@@ -271,13 +312,10 @@ nav>a:hover {
 
 .footer-img-wide {
     width: 100%;
+    border-radius: 0;
 }
 
 .footer-img-tall {
-    display: none;
-}
-
-footer .social-links {
     display: none;
 }
 
@@ -287,14 +325,8 @@ footer .social-links {
         justify-content: space-between;
     }
 
-    header .social-links {
+    header>.social-links {
         display: none;
-    }
-
-    footer .social-links {
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
 
     .footer-img-wide {
@@ -304,5 +336,6 @@ footer .social-links {
     .footer-img-tall {
         display: block;
         width: 100%;
+        border-radius: 0;
     }
 }
